@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<body class="body-sign-up">
+    <form class="signup-content" method="POST">
+        <div class="signup-container">
+            <h1>How many units are you taking this semester?</h1>
+            <hr>
+
+            <div class="form-group">
+                {{ form.noOfUnits.label() }}
+                {{ form.noOfUnits() }}
+
+                {{ form.submit(class="signupbtn") }}
+            </div>
+    
+        </div>
+    </form>
+</body>
+
+{% endblock %}
