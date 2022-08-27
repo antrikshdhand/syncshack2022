@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS enrolled;
+DROP TABLE IF EXISTS invites;
 
 CREATE TABLE users (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -8,13 +9,21 @@ CREATE TABLE users (
 	PrefName TEXT NOT NULL,
 	Email TEXT NOT NULL,
 	Passw TEXT NOT NULL,
-	UserStatus TEXT NOT NULL,
+	UserStatus INTEGER NOT NULL,
 	Course TEXT NOT NULL,
 	Faculty TEXT NOT NULL
 );
 
 CREATE TABLE enrolled (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
-	Email TEXT NOT NULL,
+	Email TEXT NOT NULL REFERENCES users(Email),
 	UnitOfStudy TEXT NOT NULL 
+);
+
+CREATE TABLE invites (
+	inviter TEXT NOT NULL,
+	invitee TEXT NOT NULL,
+	created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	Constraint primary key ( inviter ,invitee)
+
 );
