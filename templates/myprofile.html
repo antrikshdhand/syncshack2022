@@ -23,7 +23,7 @@
                     <a href="{{ url_for('login') }}" class="nav-link">LOGIN</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url_for('signUp') }}" class="nav-link">SIGN-UP</a>
+                    <a href="{{ url_for('signUp1') }}" class="nav-link">SIGN-UP</a>
                 </li>
             </ul>
             <div class="hamburger">
@@ -45,7 +45,7 @@
 
                 {%for i in range(0, len))%}
                     <input type="radio" id={{unit_list[i]}} name="choose-focus-unit" value={{unit_list[i]}}>
-                    <label for={{unit_list[i]}}> ELEC1005</label><br>
+                    <label for={{unit_list[i]}}> {{unit_list[i]}} </label><br>
                 {%endfor%}
                 <input type="radio" id="ELEC1005" name="choose-focus-unit" value="ELEC1005">
                 <label for="ELEC1005"> ELEC1005</label><br>

@@ -1,5 +1,6 @@
+from multiprocessing import connection
 from flask import Flask, render_template, redirect, request, session, url_for
-from helpers import get_db_connection
+from helpers import get_db_connection, add_subjects, add_user
 from forms import SignUp1, SignUp2, SignUp3, Login
 
 import json
@@ -35,40 +36,27 @@ class Application:
 		cur.close()
 
 		#set up active_users
-		self.active_users = ()
-		self.invited_users = ()
-		self.accepted_users = ()
+		self.active_users = []
+		self.invited_users = []
+		self.accepted_users = []
+
+	def get_units_of_study(self):
+		return self.user_subjects
 	
-	def preferences(self, subjects):
+	def preferences(self, subject):
 		preffered_buddies = []
 
 		connection = get_db_connection()
 		cur = connection.cursor()
 		#get only users with status online
-		for sub in subjects:
-			cur.execute("SELECT Email FROM users natural join enrolled where status=1 and UnitOfStudy='{} and Email != {}'".format(sub, self.email))
-			online_users = cur.fetchall()
-			if online_users[0] not in preffered_buddies:
-				if len(preffered_buddies) == 5:
-					return preffered_buddies
-				preffered_buddies.append(online_users[0])
+		cur.execute("SELECT Email FROM users natural join enrolled where status=1 and UnitOfStudy='{} and Email != {}'".format(subject, self.email))
+		online_users = cur.fetchall()
+		if online_users[0] not in preffered_buddies:
+			if len(preffered_buddies) == 5:
+				return preffered_buddies
+			preffered_buddies.append(online_users[0])
 
-		#get users with the same subjects that are online
-		# for subject in self.user_subjects:
-		# 	#Get all people with same subjects
-		# 	cur.execute("SELECT Email FROM enrolled WITH UnitOfStudy={}".format(subject))
-		# 	subject_users = cur.fetchall()
-		# 	for S_user in subject_users():
-		# 		for O_user in online_users:
-		# 			#If the user is online and does have the same email
-		# 			if S_user[0] == O_user['Email'] and S_user[0] != self.email:
-		# 				#if not already added
-		# 				if S_user not in preffered_buddies:
-		# 					preffered_buddies.append(S_user[0])
-		# 					if len(preffered_buddies) == 5:
-		# 						return preffered_buddies
-			
-		#get check if online users have the same course
+
 
 		cur.execute("SELECT Email FROM users where status=1 and Course = {}".format(self.course))
 		online_users = cur.fetchall()
@@ -78,15 +66,7 @@ class Application:
 				preffered_buddies.append(online_users[0])
 
 
-		# for user in online_users:
-		# 	if user['Course'] == self.course:
-		# 		if user['Email'] != self.email:
-		# 			if user not in preffered_buddies:
-		# 				preffered_buddies.append(S_user[0])
-		# 				if len(preffered_buddies) == 5:
-		# 					return preffered_buddies
 
-		#get check if online users have the same faculty
 		cur.execute("SELECT Email FROM users where status=1 and Faculty = {}".format(self.faculty))
 		online_users = cur.fetchall()
 		if online_users[0] not in preffered_buddies:
@@ -95,15 +75,7 @@ class Application:
 				preffered_buddies.append(online_users[0])
 
 
-		# for user in online_users:
-		# 	if user['Faculty'] == self.course:
-		# 		if user['Email'] != self.email:
-		# 			if user not in preffered_buddies:
-		# 				preffered_buddies.append(S_user[0])
-		# 				if len(preffered_buddies) == 5:
-		# 					return preffered_buddies
 
-		#get check if online users are online
 		cur.execute("SELECT Email FROM users where status=1")
 		online_users = cur.fetchall()
 		if online_users[0] not in preffered_buddies:
@@ -112,21 +84,38 @@ class Application:
 				preffered_buddies.append(online_users[0])
 
 		
-		# for user in online_users:
-		# 	if user['Email'] != self.email:
-		# 		if user not in preffered_buddies:
-		# 			preffered_buddies.append(S_user[0])
-		# 			if len(preffered_buddies) == 5:
-		# 				return preffered_buddies
-		
 		return preffered_buddies
-
+	
+	def get_buddy_data(self, subject):
+		buddies = []
+		self.active_users = self.preferences(subject)
+		connection = get_db_connection()
+		cur = connection.cursor()
 		
+		#for each email
+		for user in self.active_users:
+			cur.execute("SELECT * FROM users WHEN Email={}".format(user))
+			row = cur.fetchone()
+			#append the email, name, unit of study
+			buddies.append([row['Email'], row['name'], subject])
+		
+		return buddies
+			
+	def get_invited_data(self, subject):
+		users = []
+		connection = get_db_connection()
+		cur = connection.cursor()
+		for user in self.invited_users:
+			cur.execute("SELECT * FROM users WHEN Email={}".format(user))
+			row = cur.fetchone()
+			users.append([row['Email'], row['name'], subject])
+		return users
 
 
 
 	def add_invitaiton( self , user ):
-		
+		self.active_users.remove(user)
+		self.invited_users.append(user)
 		conn = get_db_connection()
 		cur = conn.cursor()
 		cur.execute("Insert into invites (inviter, invitee) values ( {} , {}))".format( self.email, user))
@@ -135,19 +124,24 @@ class Application:
 	def incoming_invitation(self,user):
 		conn = get_db_connection()
 		cur = conn.cursor()
-		cur.execute("select * form invites wehre invitee = {}".format(self.email))
+		cur.execute("select * form invites WHEN invitee = {}".format(self.email))
 		
-		result = cur.fetchall
+		result = cur.fetchall()
+		#review
+		#REALLY REVIEW
 		
 		if result != '': 
 			return result[0]
 		
-		cur.close
+		cur.close()
+
+	
 
 
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
+@app.route('/index.html', methods=['GET', 'POST'])
 def index():
 	conn = get_db_connection()
 	posts = conn.execute('SELECT * FROM posts').fetchall()
@@ -161,8 +155,9 @@ def signUp1():
 		result_dict = request.form.to_dict()
 		session['form1'] = json.dumps(result_dict)
 		profile = list(result_dict.values())[:-1]
-
 		# send profile to Jack
+
+		print(profile)
 				
 		# return redirect(url_for("myprofile"))
 		return redirect(url_for("signUp2"))
@@ -172,9 +167,8 @@ def signUp1():
 def signUp2():
 	signUpForm2 = SignUp2()
 	if signUpForm2.is_submitted():
-		result_dict = request.form.to_dict()
-		noOfUnits = list(result_dict.values())[:-1][0]
-		session['noOfUnits'] = json.dumps(noOfUnits)
+		course_info = request.form.to_dict()
+		# send course_info to Jack
 
 		return redirect(url_for("signUp3"))
 
@@ -188,7 +182,6 @@ def signUp3():
 	if signUpForm3.is_submitted():
 		result_dict = request.form.to_dict()
 		unit_list = list(result_dict.values())[:-1]
-
 		# send unit list to Jack
 
 		return redirect(url_for("myprofile"))

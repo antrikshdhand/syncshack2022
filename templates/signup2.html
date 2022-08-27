@@ -5,12 +5,18 @@
 <body class="body-sign-up">
     <form class="signup-content" method="POST">
         <div class="signup-container">
-            <h1>How many units are you taking this semester?</h1>
+            <h1>Tell us a bit about you!</h1>
             <hr>
 
             <div class="form-group">
                 {{ form.noOfUnits.label() }}
                 {{ form.noOfUnits() }}
+                <br>
+                {{ form.course.label() }}
+                {{ form.course() }}
+
+                {{ form.faculty.label() }}
+                {{ form.faculty() }}
 
                 {{ form.submit(class="signupbtn") }}
             </div>
