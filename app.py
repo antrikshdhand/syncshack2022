@@ -126,12 +126,16 @@ def index():
 
 @app.route('/signUp', methods=['GET', 'POST'])
 def signUp():
-    signUpForm = SignUp()
-    if signUpForm.is_submitted():
-        result_dict = request.form.to_dict()
-        session['form1'] = json.dumps(result_dict)
-        return redirect(url_for("index"))
-    return render_template("signup.html", form = signUpForm)
+	signUpForm = SignUp()
+	if signUpForm.is_submitted():
+		result_dict = request.form.to_dict()
+		session['form1'] = json.dumps(result_dict)
+		profile = list(result_dict.values())[:-1]
+
+		# send profile to Jack
+				
+		return redirect(url_for("index"))
+	return render_template("signup.html", form = signUpForm)
 
 
 @app.route('/login', methods=['GET', 'POST'])
