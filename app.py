@@ -29,17 +29,17 @@ class Application:
 		pass		
 
 
-	def add_invitaiton( user ):
+	def add_invitaiton( self , user ):
 		
 		conn = get_db_connection()
 		cur = conn.cursor()
-		cur.execute("Insert into invites (inviter, invitee) values ( self.email , user))")
+		cur.execute("Insert into invites (inviter, invitee) values ( {} , {}))".format( self.email, user))
 		cur.close
 
-	def incoming_invitation(user):
+	def incoming_invitation(self,user):
 		conn = get_db_connection()
 		cur = conn.cursor()
-		cur.execute("select * form invites wehre invitee = self.email")
+		cur.execute("select * form invites wehre invitee = {}".format(self.email))
 		
 		result = cur.fetchall
 		
