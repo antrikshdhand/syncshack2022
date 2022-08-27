@@ -1,0 +1,21 @@
+<header class="header">
+    <nav class="navbar">
+        <a href="{{ url_for('index') }}" class="nav-logo">StudyBuddy</a>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="{{ url_for('index') }}" class="nav-link">HOME</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url_for('login') }}" class="nav-link">LOGIN</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url_for('signUp') }}" class="nav-link">SIGN-UP</a>
+            </li>
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+</header>
