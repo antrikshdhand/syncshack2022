@@ -1,56 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/css/reset.css"/>
-    <link rel="stylesheet" href="/static/css/styles.css"/>
-    <!-- fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
-    <title>StudyBuddy | Welcome</title>
-</head>
+{% extends 'base.html' %}
 
-<header class="header">
-    <nav class="navbar">
-        <a href="index.html" class="nav-logo">StudyBuddy</a>
-        <ul class="nav-menu">
-            <li class="nav-item">
-                <a href="index.html" class="nav-link">HOME</a>
-            </li>
-            <li class="nav-item">
-                <a href="login.html" class="nav-link">LOGIN</a>
-            </li>
-            <li class="nav-item">
-                <a href="signup.html" class="nav-link">SIGN-UP</a>
-            </li>
-        </ul>
-        <div class="hamburger">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
+{% block content %}
+
+<body class="body-sign-up">
+    <form class="signup-content" action="/signup/SignUpInfo">
+        <div class="signup-container">
+            <h1>Login</h1>
+            <hr>
+
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="abcd1234@uni.sydney.edu.au" name="email" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+    
+            <button type="submit" class="signupbtn">Login</button>
         </div>
-    </nav>
-</header>
-
-    <body class="body-sign-up">
-        <form class="signup-content" action="/signup/SignUpInfo">
-            <div class="signup-container">
-              <h1>Login</h1>
-              <hr>
-
-              <label for="email"><b>Email</b></label>
-              <input type="text" placeholder="abcd1234@uni.sydney.edu.au" name="email" required>
-
-              <label for="psw"><b>Password</b></label>
-              <input type="password" placeholder="Enter Password" name="psw" required>
-        
-              <button type="submit" class="signupbtn">Login</button>
-            </div>
-        </form>
-        
+    </form>
+    
     </body>
 
-    <script src="/static/script.js"></script>
-</html>
+{% endblock %}
