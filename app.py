@@ -46,12 +46,14 @@ def signUp():
         return redirect(url_for("index"))
     return render_template("signup.html", form = signUpForm)
 
-@app.route('/signUp/SignUpSubmit', methods=['GET', 'POST'])
-def signup_click():
-    return render_template("index.html")
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+	loginForm = Login()
+    if loginForm.is_submitted():
+        result_dict = request.form.to_dict()
+        session['form1'] = json.dumps(result_dict)
+        return redirect(url_for("index"))
     return render_template("login.html")
 
 @app.route('/login/LoginSubmit', methods=['GET', 'POST'])
