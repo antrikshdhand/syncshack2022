@@ -30,5 +30,18 @@ def add_user(user_attributes):
 	cur.close()
 	return True
 
+	#subjects should be a list of all the units of study.
+def add_subjects(email, subjects):
+
+	connection = get_db_connection()
+	cur = connection.cursor()
+
+	for subject in subjects():
+		cur.execute("INSERT INTO enrolled (Email, UnitOfStudy) VALUES (?, ?)",
+		(email, subject))
+	
+	cur.close()
+
+
 	
 	
