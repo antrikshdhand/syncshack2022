@@ -156,6 +156,18 @@ input[type=text], input[type=password] {
   background: #f1f1f1;
 }
 
+input[type=submit] {
+    font-size: 1rem;
+    background-color: #18a7f9;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
 /* Add a background color when the inputs get focus */
 input[type=text]:focus, input[type=password]:focus {
   background-color: #ddd;

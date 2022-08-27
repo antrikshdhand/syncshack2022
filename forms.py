@@ -15,12 +15,12 @@ class SignUp(FlaskForm):
                             validators=[DataRequired()])
     confirm = PasswordField('Confirm Password',
                             validators=[DataRequired(), EqualTo('password', message='Passwords must match')])
-    submit = SubmitField('Submit')
+    submit = SubmitField('Sign Up')
 
 class Login(FlaskForm):
     email = StringField("Email", 
                         validators=[DataRequired(), Email(granular_message=True)])
     password = PasswordField('Password',
                              validators=[DataRequired()]) #EQUAL TO SQL Query for password
-
+    submit = SubmitField('Login')
     

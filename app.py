@@ -75,4 +75,4 @@ def login():
         result_dict = request.form.to_dict()
         session['form1'] = json.dumps(result_dict)
         return redirect(url_for("index"))
-    return render_template("login.html")
+    return render_template("login.html", form = loginForm)
