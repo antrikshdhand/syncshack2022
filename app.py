@@ -211,3 +211,15 @@ def myprofile():
 	units = session['form3']
 	# myprof = Search(units)
 	return render_template("myprofile.html", len=len(units), units=units)
+
+@app.route('/explore?', methods=['GET', 'POST'])
+@app.route('/explore', methods=['GET', 'POST'])
+def explore():
+	form2 = session['form2']
+	print(form2)
+	# units = form2['noOfUnits']
+	units = session['form3']
+	# myprof = Search(units)
+	return render_template("explore.html", len=len(units), units=units)
+
+

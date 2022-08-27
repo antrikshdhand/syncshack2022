@@ -9,7 +9,7 @@
 
         <h2>What's your focus unit?</h2>
 
-        <form class="choose-focus-unit" method="POST">
+        <form class="choose-focus-unit" method="POST", action="/explore">
 
             {% for i in range(0, len) %}
                 <input type="radio" id={{units[i]}} name="choose-focus-unit" value={{units[i]}}>
