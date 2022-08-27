@@ -17,4 +17,6 @@ def index():
 def index():
     return render_template("index.html")
 
-@app.route('/sign')
+@app.route('/signUp')
+
+@app.route('/signIn')
