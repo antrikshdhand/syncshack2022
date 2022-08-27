@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<body class="body-sign-up">
+    <form class="signup-content" method="POST">
+        <div class="signup-container">
+            <h1>What units are you taking this semester?</h1>
+            <hr>
+            <div class="form-group">
+                {% if units | int >= 1 %}
+                    {{ form.unit1.label() }}
+                    {{ form.unit1() }}
+                {% endif %}
+                {% if units | int >= 2 %}
+                    {{ form.unit2.label() }}
+                    {{ form.unit2() }}
+                {% endif %}
+                {% if units | int >= 3 %}
+                    {{ form.unit3.label() }}
+                    {{ form.unit3() }}
+                {% endif %}
+                {% if units | int >= 4 %}
+                    {{ form.unit4.label() }}
+                    {{ form.unit4() }}
+                {% endif %}
+                {% if units | int >= 5 %}
+                    {{ form.unit5.label() }}
+                    {{ form.unit5() }}
+                {% endif %}
+
+                {{ form.submit(class="signupbtn") }}
+            </div>
+        </div>
+    </form>
+</body>
+
+{% endblock %}
