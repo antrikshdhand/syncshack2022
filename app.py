@@ -162,8 +162,9 @@ def signUp1():
 		result_dict = request.form.to_dict()
 		session['form1'] = json.dumps(result_dict)
 		profile = list(result_dict.values())[:-1]
-
 		# send profile to Jack
+
+		print(profile)
 				
 		# return redirect(url_for("myprofile"))
 		return redirect(url_for("signUp2"))
@@ -173,10 +174,8 @@ def signUp1():
 def signUp2():
 	signUpForm2 = SignUp2()
 	if signUpForm2.is_submitted():
-		result_dict = request.form.to_dict()
-		noOfUnits = list(result_dict.values())[0]
-		print(noOfUnits)
-		session['noOfUnits'] = json.dumps(noOfUnits)
+		course_info = request.form.to_dict()
+		# send course_info to Jack
 
 		return redirect(url_for("signUp3"))
 
@@ -190,7 +189,6 @@ def signUp3():
 	if signUpForm3.is_submitted():
 		result_dict = request.form.to_dict()
 		unit_list = list(result_dict.values())[:-1]
-
 		# send unit list to Jack
 
 		return redirect(url_for("myprofile"))
