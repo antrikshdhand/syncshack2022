@@ -15,7 +15,7 @@ class Application:
 
 		self.email = email #email
 
-		conn = get_db_connection()
+		
 
 		self.user_subjects = () #subject list
 		self.course = "" #course string
@@ -27,6 +27,27 @@ class Application:
 	
 	def preferences(self):
 		pass		
+
+
+	def add_invitaiton( self , user ):
+		
+		conn = get_db_connection()
+		cur = conn.cursor()
+		cur.execute("Insert into invites (inviter, invitee) values ( {} , {}))".format( self.email, user))
+		cur.close
+
+	def incoming_invitation(self,user):
+		conn = get_db_connection()
+		cur = conn.cursor()
+		cur.execute("select * form invites wehre invitee = {}".format(self.email))
+		
+		result = cur.fetchall
+		
+		if result != '': 
+			return result[0]
+		
+		cur.close
+
 
 
 @app.route('/', methods=['GET', 'POST'])
