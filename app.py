@@ -55,7 +55,3 @@ def login():
         session['form1'] = json.dumps(result_dict)
         return redirect(url_for("index"))
     return render_template("login.html")
-
-@app.route('/login/LoginSubmit', methods=['GET', 'POST'])
-def login_click():
-    return render_template("main.html")
