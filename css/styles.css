@@ -1,6 +1,7 @@
 html {
     font-family: 'Roboto', sans-serif;
     scroll-behavior: smooth;
+    color: rgb(44, 44, 44);
 }
 
 a {
@@ -247,3 +248,88 @@ hr {
 .choose-focus-unit button {
     margin-top: 20px;
 }
+
+
+/* Explore page */
+
+.explore-container {
+    overflow: hidden;
+    margin: auto;
+    background: white;
+    padding: 40px;
+}
+
+.explore-container h1, .invited-users h1, .accepted-users h1{
+    font-size: 1.6rem;
+    margin-bottom: 30px;
+    letter-spacing: 3px;
+    font-weight: 600;
+}
+
+.explore-container p {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.scroll-matches {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 300px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.user-preview {
+    border-radius: 25px;
+    background-color: white;
+    padding: 15px;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.user-preview h2 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+}
+
+.user-preview h3 {
+    font-size: 1.4rem;
+    
+}
+
+.user-preview img {
+    width: 20%;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.user-preview p {
+    letter-spacing: 1.5px;
+}
+
+.user-studying {
+    color: green;
+    font-weight: 600;
+}
+
+.user-cramming {
+    color: rgb(255, 134, 14);
+    font-weight: 600;
+}
+
+.invited-users, .accepted-users {
+    padding: 40px;
+}
+
+.explore-container, .invited-users, .accepted-users {
+    border-radius: 20px;
+    background-color: #e4f5ff;
+    margin: 0 20px;
+    margin-bottom: 40px;
+}
+
+
