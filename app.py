@@ -134,7 +134,7 @@ def signUp():
 
 		# send profile to Jack
 				
-		return redirect(url_for("index"))
+		return redirect(url_for("myprofile"))
 	return render_template("signup.html", form = signUpForm)
 
 
@@ -146,3 +146,7 @@ def login():
         session['form1'] = json.dumps(result_dict)
         return redirect(url_for("index"))
     return render_template("login.html", form = loginForm)
+
+@app.route('/myprofile', methods=['GET', 'POST'])
+def myprofile():
+    return render_template("myprofile.html")
