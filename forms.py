@@ -1,6 +1,4 @@
-from ast import Pass
 from flask_wtf import FlaskForm
-from regex import E
 from wtforms import StringField, SubmitField, PasswordField
 from wtforms.validators import DataRequired, Email, EqualTo
 
@@ -19,11 +17,10 @@ class SignUp(FlaskForm):
                             validators=[DataRequired(), EqualTo('password', message='Passwords must match')])
     submit = SubmitField('Submit')
 
-
 class Login(FlaskForm):
     email = StringField("Email", 
-                        validators=[DataRequired, Email(granular_message=True)])
+                        validators=[DataRequired(), Email(granular_message=True)])
     password = PasswordField('Password',
-                             validators=[InputRequired]) #EQUAL TO SQL Query for password
+                             validators=[DataRequired()]) #EQUAL TO SQL Query for password
 
     
