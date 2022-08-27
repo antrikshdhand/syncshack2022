@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, request, session, url_for
 from helpers import get_db_connection
-from forms import SignUp
+from forms import SignUp, Login
 
 import json
 
@@ -49,7 +49,7 @@ def signUp():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-	loginForm = Login()
+    loginForm = Login()
     if loginForm.is_submitted():
         result_dict = request.form.to_dict()
         session['form1'] = json.dumps(result_dict)
