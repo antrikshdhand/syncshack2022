@@ -148,6 +148,7 @@ class Application:
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
+@app.route('/index.html', methods=['GET', 'POST'])
 def index():
 	conn = get_db_connection()
 	posts = conn.execute('SELECT * FROM posts').fetchall()
@@ -173,7 +174,8 @@ def signUp2():
 	signUpForm2 = SignUp2()
 	if signUpForm2.is_submitted():
 		result_dict = request.form.to_dict()
-		noOfUnits = list(result_dict.values())[:-1][0]
+		noOfUnits = list(result_dict.values())[0]
+		print(noOfUnits)
 		session['noOfUnits'] = json.dumps(noOfUnits)
 
 		return redirect(url_for("signUp3"))

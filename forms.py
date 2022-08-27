@@ -20,6 +20,19 @@ class SignUp1(FlaskForm):
 class SignUp2(FlaskForm):
     noOfUnits = SelectField("Number of units", choices=[1, 2, 3, 4, 5],
                             validators=[DataRequired()])
+    course = StringField("Degree/Course", validators=[DataRequired()])
+    faculty = SelectField("Faculty", 
+                        choices = [
+                                    "Faculty of Arts and Social Sciences",
+                                    "Faculty of Engineering",
+                                    "Faculty of Medicine and Health",
+                                    "Faculty of Science",
+                                    "School of Architecture, Design and Planning",
+                                    "University of Sydney Business School",
+                                    "Conservatorium of Music",
+                                    "Sydney Law Music"
+                                ],
+                        validators=[DataRequired()])
     submit = SubmitField('Submit')
 
 class SignUp3(FlaskForm):
