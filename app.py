@@ -15,18 +15,84 @@ class Application:
 
 		self.email = email #email
 
-		
+		#Connect to database and get course and faculty from users table
+		connection = get_db_connection()
+		cur = connection.cursor()
+		cur.execute("SELECT * FROM users WHERE Email='{}'".format(self.email))
+		row = cur.fetchone()
+		cur.close()
 
-		self.user_subjects = () #subject list
-		self.course = "" #course string
-		self.faculty = "" #faculty string
+		self.course = row['Course'] #course string
+		self.faculty = row['Faculty'] #faculty string
+		self.user_subjects = []
 
+		#reset connection and get subjects from enrolled table
+		cur = connection.cursor()
+		cur.execute("SELECT UnitOfStudy FROM enrolled WHERE Email='{}'".format(self.email))
+		subjects = cur.fetchall()
+		for subject in subjects:
+			self.user_subjects.append(subject[0])
+		cur.close()
+
+		#set up active_users
 		self.active_users = ()
 		self.invited_users = ()
 		self.accepted_users = ()
 	
 	def preferences(self):
-		pass		
+		preffered_buddies = []
+
+		connection = get_db_connection()
+		cur = connection.cursor()
+		#get only users with status online
+		cur.execute("SELECT * FROM users WITH status=1")
+		online_users = cur.fetchall()
+
+		#get users with the same subjects that are online
+		for subject in self.user_subjects:
+			#Get all people with same subjects
+			cur.execute("SELECT Email FROM enrolled WITH UnitOfStudy={}".format(subject))
+			subject_users = cur.fetchall()
+			for S_user in subject_users():
+				for O_user in online_users:
+					#If the user is online and does have the same email
+					if S_user[0] == O_user['Email'] and S_user[0] != self.email:
+						#if not already added
+						if S_user not in preffered_buddies:
+							preffered_buddies.append(S_user[0])
+							if len(preffered_buddies) == 5:
+								return preffered_buddies
+			
+		#get check if online users have the same course
+		for user in online_users:
+			if user['Course'] == self.course:
+				if user['Email'] != self.email:
+					if user not in preffered_buddies:
+						preffered_buddies.append(S_user[0])
+						if len(preffered_buddies) == 5:
+							return preffered_buddies
+
+		#get check if online users have the same faculty
+		for user in online_users:
+			if user['Faculty'] == self.course:
+				if user['Email'] != self.email:
+					if user not in preffered_buddies:
+						preffered_buddies.append(S_user[0])
+						if len(preffered_buddies) == 5:
+							return preffered_buddies
+
+		#get check if online users are online
+		for user in online_users:
+			if user['Email'] != self.email:
+				if user not in preffered_buddies:
+					preffered_buddies.append(S_user[0])
+					if len(preffered_buddies) == 5:
+						return preffered_buddies
+		
+		return preffered_buddies
+
+		
+
 
 
 	def add_invitaiton( self , user ):
