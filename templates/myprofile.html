@@ -9,13 +9,15 @@
 
         <h2>What's your focus unit?</h2>
 
-        <form class="choose-focus-unit" action="/action_page">
+        <form class="choose-focus-unit" method="POST">
 
-            {%for i in range(0, len)%}
-                <input type="radio" id="" name="choose-focus-unit" value="ELEC1005">
-                <label for="ELEC1005"> ELEC1005</label><br>
-            {%endfor%}
-            <input type="radio" id="ELEC1005" name="choose-focus-unit" value="ELEC1005">
+            {% for i in range(0, len) %}
+                <input type="radio" id={{units[i]}} name="choose-focus-unit" value={{units[i]}}>
+                <label for={{units[i]}}> {{units[i]}}</label><br>
+            {% endfor %}
+            <br>
+
+            <!-- <input type="radio" id="ELEC1005" name="choose-focus-unit" value="ELEC1005">
             <label for="ELEC1005"> ELEC1005</label><br>
             <input type="radio" id="INFO1110" name="choose-focus-unit" value="INFO1110">
             <label for="INFO1110"> INFO1110</label><br>
@@ -26,6 +28,7 @@
             <input type="radio" id="MATH1021" name="choose-focus-unit" value="MATH1021">
             <label for="MATH1021"> MATH1021</label><br><br>
 
+            -->
             <h2>Set your status!</h2>
             <input type="radio" id="Studying" name="SORC" value="Studying">
             <label for="Studying"> Studying</label><br>

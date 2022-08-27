@@ -188,6 +188,7 @@ def signUp3():
 	if signUpForm3.is_submitted():
 		result_dict = request.form.to_dict()
 		unit_list = list(result_dict.values())[:-1]
+		session['form3'] = unit_list
 		# send unit list to Jack
 
 		return redirect(url_for("myprofile"))
@@ -207,4 +208,6 @@ def myprofile():
 	form2 = session['form2']
 	print(form2)
 	# units = form2['noOfUnits']
-	return render_template("myprofile.html", len=5)
+	units = session['form3']
+	# myprof = Search(units)
+	return render_template("myprofile.html", len=len(units), units=units)
