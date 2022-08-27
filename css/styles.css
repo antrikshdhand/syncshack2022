@@ -106,7 +106,7 @@ a {
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 6rem;
+        top: 5rem;
         flex-direction: column;
         background-color: #fff;
         width: 100%;
@@ -143,7 +143,7 @@ a {
     }
 }
 
-/* Signup code */
+/* Signup / Login code */
 * {box-sizing: border-box;}
 
 /* Full-width input fields */
@@ -200,4 +200,50 @@ button:hover {
 hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
+}
+
+
+/* My Profile page */
+.profile-holder {
+    min-width: 400px;
+    padding: 50px;
+    border-radius: 25px;
+    background-color: #e4f5ff;
+    margin: auto;
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+.profile-holder h1 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    letter-spacing: 3px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.profile-holder h2 {
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    margin: 20px 0 15px 0;
+    font-weight: 500;
+}
+
+.profile-holder img {
+    width: 100%;
+    margin: auto;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 0.75rem white);
+}
+
+.profile-holder label {
+    letter-spacing: 2px;
+}
+
+.profile-holder input {
+    margin-bottom: 5px;
+}
+
+.choose-focus-unit button {
+    margin-top: 20px;
 }
