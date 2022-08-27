@@ -317,14 +317,22 @@ hr {
     margin-top: 40px;
 }
 
-.user-preview {
+button.user-preview {
+    margin: auto;
+    max-width: 350px;
+    text-align: left;
     border-radius: 25px;
     background-color: white;
+    color: rgb(44, 44, 44);
     padding: 15px;
     display:flex;
     flex-direction: row;
     align-items: center;
     margin-bottom: 20px;
+}
+
+button.user-preview:hover {
+    transform: scale(1.05);
 }
 
 .user-preview h2 {
@@ -335,7 +343,6 @@ hr {
 
 .user-preview h3 {
     font-size: 1.4rem;
-    
 }
 
 .user-preview img {
