@@ -14,3 +14,8 @@ def index():
 @app.route('/signUp', methods=['GET', 'POST'])
 def signup():
     return render_template("signup.html")
+
+@app.route('/signUp/SignUpSubmit', methods=['GET', 'POST'])
+def signup_click():
+    return render_template("index.html")
+

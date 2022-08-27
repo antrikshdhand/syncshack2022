@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/reset.css"/>
-    <link rel="stylesheet" href="css/styles.css"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"/>
     <!-- fonts -->
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
@@ -35,7 +35,7 @@
 </header>
 
     <body class="body-sign-up">
-        <form class="signup-content" action="/signup/SignUpInfo">
+        <form class="signup-content" action="/signup/SignUpSubmit">
             <div class="signup-container">
               <h1>Sign Up</h1>
               <p>Please fill in this form to create an account.</p>
@@ -70,5 +70,5 @@
         
     </body>
 
-    <script src="script.js"></script>
+    <script src="{{ url_for('static', filename='/script.js') }}"></script>
 </html>
