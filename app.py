@@ -154,10 +154,11 @@ def signUp1():
 	if signUpForm1.is_submitted():
 		result_dict = request.form.to_dict()
 		session['form1'] = json.dumps(result_dict)
+		print(session['form1'])
 		profile = list(result_dict.values())[:-1]
 		# send profile to Jack
 
-		print(profile)
+		# print(profile)
 				
 		# return redirect(url_for("myprofile"))
 		return redirect(url_for("signUp2"))
@@ -168,6 +169,8 @@ def signUp2():
 	signUpForm2 = SignUp2()
 	if signUpForm2.is_submitted():
 		course_info = request.form.to_dict()
+		session['form2'] = (course_info)
+		print(session['form2'])
 		# send course_info to Jack
 
 		return redirect(url_for("signUp3"))
@@ -177,7 +180,10 @@ def signUp2():
 @app.route('/signUp3', methods=['GET', 'POST'])
 def signUp3():
 	signUpForm3 = SignUp3()
-	noOfUnits = json.loads(session['noOfUnits'])
+	form2 = session['form2']
+	print(form2)
+	units = form2['noOfUnits']
+	
 
 	if signUpForm3.is_submitted():
 		result_dict = request.form.to_dict()
@@ -185,18 +191,20 @@ def signUp3():
 		# send unit list to Jack
 
 		return redirect(url_for("myprofile"))
-	return render_template("signup3.html", form = signUpForm3,
-											units = noOfUnits)
+	return render_template("signup3.html", form = signUpForm3, units = units)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     loginForm = Login()
     if loginForm.is_submitted():
         result_dict = request.form.to_dict()
-        session['form1'] = json.dumps(result_dict)
-        return redirect(url_for("index"))
+        session['login'] = (result_dict)
+        return redirect(url_for("myprofile"))
     return render_template("login.html", form = loginForm)
 
 @app.route('/myprofile', methods=['GET', 'POST'])
 def myprofile():
-    return render_template("myprofile.html")
+	form2 = session['form2']
+	print(form2)
+	# units = form2['noOfUnits']
+	return render_template("myprofile.html", len=5)
