@@ -14,16 +14,16 @@
 
     <header class="header">
         <nav class="navbar">
-            <a href="index.html" class="nav-logo">StudyBuddy</a>
+            <a href="{{ url_for('index') }}" class="nav-logo">StudyBuddy</a>
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="index.html" class="nav-link">HOME</a>
+                    <a href="{{ url_for('index') }}" class="nav-link">HOME</a>
                 </li>
                 <li class="nav-item">
-                    <a href="login.html" class="nav-link">LOGIN</a>
+                    <a href="{{ url_for('login') }}" class="nav-link">LOGIN</a>
                 </li>
                 <li class="nav-item">
-                    <a href="signup.html" class="nav-link">SIGN-UP</a>
+                    <a href="{{ url_for('signUp1') }}" class="nav-link">SIGN-UP</a>
                 </li>
             </ul>
             <div class="hamburger">
@@ -39,23 +39,29 @@
             <h1>Hello, Jenna!</h1>
             <img src="/static/image/jenna_photo.jpg" alt="user photo">
 
-            <form class="choose-focus-unit" action="/action_page.php">
-                <h2>What's your focus unit?</h2>
-                <input type="radio" id="ELEC1005" name="ELEC1005" value="ELEC1005">
+            <h2>What's your focus unit?</h2>
+
+            <form class="choose-focus-unit" action="/action_page">
+
+                {%for i in range(0, len)%}
+                    <input type="radio" id="" name="choose-focus-unit" value="ELEC1005">
+                    <label for="ELEC1005"> ELEC1005</label><br>
+                {%endfor%}
+                <input type="radio" id="ELEC1005" name="choose-focus-unit" value="ELEC1005">
                 <label for="ELEC1005"> ELEC1005</label><br>
-                <input type="radio" id="INFO1110" name="INFO1110" value="INFO1110">
+                <input type="radio" id="INFO1110" name="choose-focus-unit" value="INFO1110">
                 <label for="INFO1110"> INFO1110</label><br>
-                <input type="radio" id="MATH1002" name="MATH1002" value="MATH1002">
+                <input type="radio" id="MATH1003" name="choose-focus-unit" value="MATH1003">
+                <label for="MATH1003"> MATH1003</label><br>
+                <input type="radio" id="MATH1002" name="choose-focus-unit" value="MATH1002">
                 <label for="MATH1002"> MATH1002</label><br>
-                <input type="radio" id="I'm open!" name="MATH1002" value="MATH1002">
-                <label for="MATH1002"> MATH1002</label><br>
-                <input type="radio" id="MATH1021" name="MATH1002" value="MATH1021">
+                <input type="radio" id="MATH1021" name="choose-focus-unit" value="MATH1021">
                 <label for="MATH1021"> MATH1021</label><br><br>
 
                 <h2>Set your status!</h2>
-                <input type="radio" id="Studying" name="Studying" value="Studying">
+                <input type="radio" id="Studying" name="SORC" value="Studying">
                 <label for="Studying"> Studying</label><br>
-                <input type="radio" id="Cramming" name="Cramming" value="Cramming">
+                <input type="radio" id="Cramming" name="SORC" value="Cramming">
                 <label for="Cramming"> Cramming</label><br><br>
                 <button type="submit" class="signupbtn">Go Online</button>
             </form>

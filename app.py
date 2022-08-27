@@ -1,7 +1,7 @@
 from multiprocessing import connection
 from flask import Flask, render_template, redirect, request, session, url_for
-from helpers import get_db_connection, add_user
-from forms import SignUp, Login
+from helpers import get_db_connection, add_subjects, add_user
+from forms import SignUp1, SignUp2, SignUp3, Login
 
 import json
 
@@ -141,25 +141,52 @@ class Application:
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
+@app.route('/index.html', methods=['GET', 'POST'])
 def index():
 	conn = get_db_connection()
 	posts = conn.execute('SELECT * FROM posts').fetchall()
 	conn.close()
 	return render_template('index.html', posts=posts)
 
-@app.route('/signUp', methods=['GET', 'POST'])
-def signUp():
-	signUpForm = SignUp()
-	if signUpForm.is_submitted():
+@app.route('/signUp1', methods=['GET', 'POST'])
+def signUp1():
+	signUpForm1 = SignUp1()
+	if signUpForm1.is_submitted():
 		result_dict = request.form.to_dict()
 		session['form1'] = json.dumps(result_dict)
 		profile = list(result_dict.values())[:-1]
-		
 		# send profile to Jack
-				
-		return redirect(url_for("myprofile"))
-	return render_template("signup.html", form = signUpForm)
 
+		print(profile)
+				
+		# return redirect(url_for("myprofile"))
+		return redirect(url_for("signUp2"))
+	return render_template("signup1.html", form = signUpForm1)
+
+@app.route('/signUp2', methods=['GET', 'POST'])
+def signUp2():
+	signUpForm2 = SignUp2()
+	if signUpForm2.is_submitted():
+		course_info = request.form.to_dict()
+		# send course_info to Jack
+
+		return redirect(url_for("signUp3"))
+
+	return render_template("signup2.html", form = signUpForm2)
+
+@app.route('/signUp3', methods=['GET', 'POST'])
+def signUp3():
+	signUpForm3 = SignUp3()
+	noOfUnits = json.loads(session['noOfUnits'])
+
+	if signUpForm3.is_submitted():
+		result_dict = request.form.to_dict()
+		unit_list = list(result_dict.values())[:-1]
+		# send unit list to Jack
+
+		return redirect(url_for("myprofile"))
+	return render_template("signup3.html", form = signUpForm3,
+											units = noOfUnits)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

@@ -1,6 +1,143 @@
+gbmk
+#2594
+
+yodalee — Yesterday at 10:09
+In j12
+The "winter garden"
+Theres two first years looking for a team
+yodalee — Yesterday at 10:25
+Are you here yet???
+Susan — Yesterday at 10:26
+We r looking for parking
+yodalee — Yesterday at 10:38
+Cool cool
+Going to pnr rn
+Susan — Yesterday at 10:48
+We f here
+yodalee — Yesterday at 10:48
+We're in the pnr lecture thetre
+Theatre*
+gbmk — Yesterday at 11:29
+We need a team name
+And we need to do the team reg
+Everyone welcome 
+finnh.w
+!
+ — Yesterday at 12:13
+finnh.w — Yesterday at 12:14
+finnharleywhitney@gmail.com
+antriksh — Yesterday at 12:14
+dhandantriksh@gmail.com
+gbmk — Yesterday at 12:14
+udit.samant@gmail.com
+finnh.w — Yesterday at 12:14
+Finn Harley Whitney
+Susan — Yesterday at 12:15
+sulavmalla.malla7@gmail.com
+Welcome 
+Quinlan
+. Say hi!
+ — Yesterday at 12:16
+Quinlan — Yesterday at 12:16
+Quinlan.xander@gmail.com
+yodalee — Yesterday at 12:27
+https://www.makeitmissoula.com/2021/04/top-5-video-games-for-visually-impaired-players/
+Make It Missoula
+carolblodgett
+Top 5 Video Games for Visually Impaired Players
+As technology has advanced, humans have figured out ways to make video games accessible to the visually impaired. Here are 5 games for visually impaired players.
+Quinlan — Yesterday at 13:51
+Guys come lab 117
+Susan — Yesterday at 15:15
+Study buddy:
+yodalee — Yesterday at 15:17
+Study buddy -> feasible in 24 hours, because we have a strong emotional component which we can use in the pitch so we can rely on this rather than technical specificities
+antriksh — Yesterday at 15:18
+StudyBuddy: a really easy way to combat isolation while studying in university. Clippy: Everyone can use it. Literally everyone. Something like 40% of the Australian workforce worked from home in the last year.
+Susan — Yesterday at 15:19
+we have knowledge, and able to pitch uni students.
+other: complex
+Image
+yodalee — Yesterday at 15:22
+thank you
+antriksh — Yesterday at 15:39
+https://devpost.com/software/477119/joins/2DoQ3X262BZdO5xskehWgg
+yodalee — Yesterday at 16:26
+plee3851@uni.sydney.edu.au
+Quinlan — Yesterday at 16:26
+Jqui7275@uni.sydney.edu.au
+Susan — Yesterday at 17:34
+Image
+gbmk — Yesterday at 17:50
+https://developer.mozilla.org/en-US/docs/Learn/Forms/Your_first_form
+Your first form - Learn web development | MDN
+Congratulations, you've built your first web form. It looks like this live:
+Your first form - Learn web development | MDN
+yodalee — Yesterday at 18:46
+https://trello.com/invite/studybuddy133/5ad84e82f2c65bed9e530f946b9788d8
+Trello
+Organize anything, together. Trello is a collaboration tool that organizes your projects into boards. In one glance, know what's being worked on, who's working on what, and where something is in a process.
+finnh.w — Today at 00:46
+Hey guys hows the project going?
+antriksh — Today at 00:46
+its going good bro, hows the party?
+# REQUIRED LIBRARIES
+from flask_wtf import FlaskForm
+from wtforms import StringField, SelectField, SubmitField, DecimalField
+from wtforms.validators import DataRequired, Length
+
+class Step1(FlaskForm):
+Expand
+forms.py
+4 KB
+finnh.w — Today at 00:47
+thats so good to hear! The party was pretty fun, tho now Im back at home just chilling.
+Hows the hackathon been for u guys in the meantime then? Are you still at the pnr or?
+Susan — Today at 00:47
+allg, just come back around 7 am trm>>
+Yeah, still in pnr
+It is fun tho
+finnh.w — Today at 00:49
+Ok mad, I'll come by then
+Glad to hear its going well then
+Anyway, gl and gn
+Cya tomorrow
+/todat
+antriksh — Today at 00:51
+see ya cuz
+antriksh — Today at 01:49
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <br>
+    <div class="row align-items-start">
+Expand
+calculator3.html
+8 KB
+yodalee — Today at 04:36
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+Expand
+message.txt
+3 KB
 html {
     font-family: 'Roboto', sans-serif;
     scroll-behavior: smooth;
+    color: rgb(44, 44, 44);
+}
+Expand
+message.txt
+7 KB
+﻿
+html {
+    font-family: 'Roboto', sans-serif;
+    scroll-behavior: smooth;
+    color: rgb(44, 44, 44);
 }
 
 a {
@@ -65,8 +202,13 @@ a {
 
 
 /* Welcome Page Content */
+
+.bolden {
+    font-weight: 600;
+}
+
 .welcome-page {
-    padding: 80px 25px;
+    padding: 80px 25px 40px 25px;
     text-align: center;
 }
 
@@ -79,17 +221,21 @@ a {
     margin-bottom: 20px;
 }
 
-.welcome-page h2 {
-    margin-top: 50px;
+.welcome-page h2, .welcome-page a {
+    margin-top: 15px;
     font-size: 1.5rem;
     font-weight: 800;
     letter-spacing: 1px;
     color: #18a7f9;
     font-family: 'League Spartan', sans-serif;
-    margin-bottom: 40px;
+}
+
+.welcome-page a:hover {
+    color: rgb(145, 145, 145);
 }
 
 .welcome-page h3 {
+    margin-top: 20px;
     font-size: 1rem;
     font-weight: 400;
     letter-spacing: 1px;
@@ -102,11 +248,39 @@ a {
     padding: 0px 20px;
 }
 
+#student-book {
+    border-radius: 50%;
+    width: 45%;
+    margin-left: 230px;
+}
+
+#jacaranda-1 {
+    border-radius: 50%;
+    width: 35%;
+    margin-left: 45px;
+}
+
+#jacaranda-2 {
+    border-radius: 50%;
+    width: 30%;
+    margin-left: 230px;
+}
+
+#student_phone {
+    border-radius: 50%;
+    width: 45%;
+    margin-left: 45px;
+}
+
+.image-content-2 {
+    margin-bottom: 50px;
+}
+
 @media only screen and (max-width: 900px) {
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 6rem;
+        top: 5rem;
         flex-direction: column;
         background-color: #fff;
         width: 100%;
@@ -143,7 +317,7 @@ a {
     }
 }
 
-/* Signup code */
+/* Signup / Login code */
 * {box-sizing: border-box;}
 
 /* Full-width input fields */
@@ -154,18 +328,6 @@ input[type=text], input[type=password] {
   display: inline-block;
   border: none;
   background: #f1f1f1;
-}
-
-input[type=submit] {
-    font-size: 1rem;
-    background-color: #18a7f9;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    opacity: 0.9;
 }
 
 /* Add a background color when the inputs get focus */
@@ -186,6 +348,18 @@ button {
   width: 100%;
   opacity: 0.9;
 }
+
+input[type=submit] {
+    font-size: 1rem;
+    background-color: #18a7f9;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
 
 button:hover {
   background-color: #6fcaff;
@@ -213,3 +387,134 @@ hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
 }
+
+
+/* My Profile page */
+.profile-holder {
+    min-width: 400px;
+    padding: 50px;
+    border-radius: 25px;
+    background-color: #e4f5ff;
+    margin: auto;
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+.profile-holder h1 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    letter-spacing: 3px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.profile-holder h2 {
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    margin: 20px 0 15px 0;
+    font-weight: 500;
+}
+
+.profile-holder img {
+    width: 100%;
+    margin: auto;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 0.75rem white);
+}
+
+.profile-holder label {
+    letter-spacing: 2px;
+}
+
+.profile-holder input {
+    margin-bottom: 5px;
+}
+
+.choose-focus-unit button {
+    margin-top: 20px;
+}
+
+
+/* Explore page */
+
+.explore-container {
+    overflow: hidden;
+    margin: auto;
+    background: white;
+    padding: 40px;
+}
+
+.explore-container h1, .invited-users h1, .accepted-users h1{
+    font-size: 1.6rem;
+    margin-bottom: 30px;
+    letter-spacing: 3px;
+    font-weight: 600;
+}
+
+.explore-container p {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.scroll-matches {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 300px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.user-preview {
+    border-radius: 25px;
+    background-color: white;
+    padding: 15px;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.user-preview h2 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+}
+
+.user-preview h3 {
+    font-size: 1.4rem;
+    
+}
+
+.user-preview img {
+    width: 20%;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.user-preview p {
+    letter-spacing: 1.5px;
+}
+
+.user-studying {
+    color: green;
+    font-weight: 600;
+}
+
+.user-cramming {
+    color: rgb(255, 134, 14);
+    font-weight: 600;
+}
+
+.invited-users, .accepted-users {
+    padding: 40px;
+}
+
+.explore-container, .invited-users, .accepted-users {
+    border-radius: 20px;
+    background-color: #e4f5ff;
+    margin: 0 20px;
+    margin-bottom: 40px;
+}
+message.txt
+7 KB
