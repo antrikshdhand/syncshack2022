@@ -150,9 +150,19 @@ def signUp1():
 	signUpForm1 = SignUp1()
 	if signUpForm1.is_submitted():
 		result_dict = request.form.to_dict()
+<<<<<<< HEAD
+=======
+		session['form1'] = json.dumps(result_dict)
+		print(session['form1'])
+>>>>>>> 837ae7d9a23f53e27a90dfcd690610b9e7a29b0d
 		profile = list(result_dict.values())[:-1]
 		session['profile'] = json.dumps(profile)
 
+<<<<<<< HEAD
+=======
+		# print(profile)
+				
+>>>>>>> 837ae7d9a23f53e27a90dfcd690610b9e7a29b0d
 		# return redirect(url_for("myprofile"))
 		return redirect(url_for("signUp2"))
 	return render_template("signup1.html", form = signUpForm1)
@@ -163,7 +173,13 @@ def signUp2():
 
 	if signUpForm2.is_submitted():
 		course_info = request.form.to_dict()
+<<<<<<< HEAD
 		session["course_info"] = json.dumps(course_info)
+=======
+		session['form2'] = (course_info)
+		print(session['form2'])
+		# send course_info to Jack
+>>>>>>> 837ae7d9a23f53e27a90dfcd690610b9e7a29b0d
 
 		return redirect(url_for("signUp3"))
 
@@ -172,6 +188,13 @@ def signUp2():
 @app.route('/signUp3', methods=['GET', 'POST'])
 def signUp3():
 	signUpForm3 = SignUp3()
+<<<<<<< HEAD
+=======
+	form2 = session['form2']
+	print(form2)
+	units = form2['noOfUnits']
+	
+>>>>>>> 837ae7d9a23f53e27a90dfcd690610b9e7a29b0d
 
 	if signUpForm3.is_submitted():
 		result_dict = request.form.to_dict()
@@ -179,20 +202,45 @@ def signUp3():
 		profile = json.loads(session["profile"])
 		course_info = json.loads(session["course_info"])
 		unit_list = list(result_dict.values())[:-1]
+<<<<<<< HEAD
 		combineSignUps(profile, course_info, unit_list)
 
 		return redirect(url_for("myprofile"))
 	return render_template("signup3.html", form = signUpForm3)
+=======
+		session['form3'] = unit_list
+		# send unit list to Jack
+
+		return redirect(url_for("myprofile"))
+	return render_template("signup3.html", form = signUpForm3, units = units)
+>>>>>>> 837ae7d9a23f53e27a90dfcd690610b9e7a29b0d
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     loginForm = Login()
     if loginForm.is_submitted():
         result_dict = request.form.to_dict()
-        session['form1'] = json.dumps(result_dict)
-        return redirect(url_for("index"))
+        session['login'] = (result_dict)
+        return redirect(url_for("myprofile"))
     return render_template("login.html", form = loginForm)
 
 @app.route('/myprofile', methods=['GET', 'POST'])
 def myprofile():
-    return render_template("myprofile.html")
+	form2 = session['form2']
+	print(form2)
+	# units = form2['noOfUnits']
+	units = session['form3']
+	# myprof = Search(units)
+	return render_template("myprofile.html", len=len(units), units=units)
+
+@app.route('/explore?', methods=['GET', 'POST'])
+@app.route('/explore', methods=['GET', 'POST'])
+def explore():
+	form2 = session['form2']
+	print(form2)
+	# units = form2['noOfUnits']
+	units = session['form3']
+	# myprof = Search(units)
+	return render_template("explore.html", len=len(units), units=units)
+
+

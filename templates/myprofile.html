@@ -1,73 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/css/reset.css"/>
-    <link rel="stylesheet" href="/static/css/styles.css"/>
-    <!-- fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
-    <title>StudyBuddy | Welcome</title>
-</head>
+{% extends 'base.html' %}
 
-    <header class="header">
-        <nav class="navbar">
-            <a href="{{ url_for('index') }}" class="nav-logo">StudyBuddy</a>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="{{ url_for('index') }}" class="nav-link">HOME</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url_for('login') }}" class="nav-link">LOGIN</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url_for('signUp1') }}" class="nav-link">SIGN-UP</a>
-                </li>
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </nav>
-    </header>
+{% block content %}
 
-    <body>
-        <div class="profile-holder">
-            <h1>Hello, Jenna!</h1>
-            <img src="/static/image/jenna_photo.jpg" alt="user photo">
+<body>
+    <div class="profile-holder">
+        <h1>Hello, Jenna!</h1>
+        <img src="/static/image/jenna_photo.jpg" alt="user photo">
 
-            <h2>What's your focus unit?</h2>
+        <h2>What's your focus unit?</h2>
 
-            <form class="choose-focus-unit" action="/action_page">
+        <form class="choose-focus-unit" method="POST", action="/explore">
 
-                {%for i in range(0, len)%}
-                    <input type="radio" id="" name="choose-focus-unit" value="ELEC1005">
-                    <label for="ELEC1005"> ELEC1005</label><br>
-                {%endfor%}
-                <input type="radio" id="ELEC1005" name="choose-focus-unit" value="ELEC1005">
-                <label for="ELEC1005"> ELEC1005</label><br>
-                <input type="radio" id="INFO1110" name="choose-focus-unit" value="INFO1110">
-                <label for="INFO1110"> INFO1110</label><br>
-                <input type="radio" id="MATH1003" name="choose-focus-unit" value="MATH1003">
-                <label for="MATH1003"> MATH1003</label><br>
-                <input type="radio" id="MATH1002" name="choose-focus-unit" value="MATH1002">
-                <label for="MATH1002"> MATH1002</label><br>
-                <input type="radio" id="MATH1021" name="choose-focus-unit" value="MATH1021">
-                <label for="MATH1021"> MATH1021</label><br><br>
+            {% for i in range(0, len) %}
+                <input type="radio" id={{units[i]}} name="choose-focus-unit" value={{units[i]}}>
+                <label for={{units[i]}}> {{units[i]}}</label><br>
+            {% endfor %}
+            <br>
 
-                <h2>Set your status!</h2>
-                <input type="radio" id="Studying" name="SORC" value="Studying">
-                <label for="Studying"> Studying</label><br>
-                <input type="radio" id="Cramming" name="SORC" value="Cramming">
-                <label for="Cramming"> Cramming</label><br><br>
-                <button type="submit" class="signupbtn">Go Online</button>
-            </form>
-        </div>
-        
-    </body>
+            <!-- <input type="radio" id="ELEC1005" name="choose-focus-unit" value="ELEC1005">
+            <label for="ELEC1005"> ELEC1005</label><br>
+            <input type="radio" id="INFO1110" name="choose-focus-unit" value="INFO1110">
+            <label for="INFO1110"> INFO1110</label><br>
+            <input type="radio" id="MATH1003" name="choose-focus-unit" value="MATH1003">
+            <label for="MATH1003"> MATH1003</label><br>
+            <input type="radio" id="MATH1002" name="choose-focus-unit" value="MATH1002">
+            <label for="MATH1002"> MATH1002</label><br>
+            <input type="radio" id="MATH1021" name="choose-focus-unit" value="MATH1021">
+            <label for="MATH1021"> MATH1021</label><br><br>
 
-    <script src="/static/script.js"></script>
-</html>
+            -->
+            <h2>Set your status!</h2>
+            <input type="radio" id="Studying" name="SORC" value="Studying">
+            <label for="Studying"> Studying</label><br>
+            <input type="radio" id="Cramming" name="SORC" value="Cramming">
+            <label for="Cramming"> Cramming</label><br><br>
+            <button type="submit" class="signupbtn">Go Online</button>
+        </form>
+    </div>
+    
+</body>
+    
+{% endblock %}
