@@ -1,46 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/css/reset.css"/>
-    <link rel="stylesheet" href="/static/css/styles.css"/>
-    <!-- fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
-    <title>StudyBuddy | Welcome</title>
-</head>
-</head>
+{% extends 'base.html' %}
 
-<header class="header">
-    <nav class="navbar">
-        <a href="index" class="nav-logo">StudyBuddy</a>
-        <ul class="nav-menu">
-            <li class="nav-item">
-                <a href="index" class="nav-link">HOME</a>
-            </li>
-            <li class="nav-item">
-                <a href="login" class="nav-link">LOGIN</a>
-            </li>
-            <li class="nav-item">
-                <a href="signUp1" class="nav-link">SIGN-UP</a>
-            </li>
-        </ul>
-        <div class="hamburger">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-    </nav>
-</header>
+{% block content %}
 
+<body>
     <div class="welcome-page">
         <h1>Studying alone?</h1>
         <h1>Cramming an assignment?</h1>
         <h1><span class="bolden">You're not alone</span></h1> 
     </div>
-    <div class="image-content">
+    <div class="image">
         <img id="student-book" src="/static/image/student-book.jpg">
         <img id="jacaranda-1" src="/static/image/jacaranda1.jpg">
     </div>
@@ -56,7 +24,6 @@
         <img id="jacaranda-2" src="/static/image/jacaranda2.jpg">
         <img id="student_phone" src="/static/image/student_phone.jpg">
     </div>
-</div>
+</body>
 
-    <script src="/static/script.js"></script>
-</html>
+{% endblock %}
