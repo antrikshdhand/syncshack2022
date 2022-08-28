@@ -1,9 +1,10 @@
-from multiprocessing import connection
-from flask import Flask, render_template, redirect, request, session, url_for
 from helpers import get_db_connection, add_subjects, add_user, combineSignUps
 from forms import SignUp1, SignUp2, SignUp3, Login
 
+# required packages
 import json
+from flask import Flask, render_template, redirect, request, session, url_for
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "syncshack2022"
@@ -204,10 +205,10 @@ def myprofile():
 @app.route('/explore?', methods=['GET', 'POST'])
 @app.route('/explore', methods=['GET', 'POST'])
 def explore():
-	form2 = session['form2']
+	form2 = session['course_info']
 	print(form2)
 	# units = form2['noOfUnits']
-	units = session['form3']
+	units = session['unit_list']
 	# myprof = Search(units)
 	return render_template("explore.html", len=len(units), units=units)
 
