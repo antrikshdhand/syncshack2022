@@ -34,60 +34,60 @@
         </nav>
     </header>
 
-    body class="explore-body">
-    <div class="explore-container">
-        <h1> Top Matches </h1>
-        <p> These are the peers you matched best with.</p>
-        <p> This is done in the order of uoS, course and faculty.</p> 
-        <div class="scroll-matches">
-            <button class="user-preview" onclick="addToInvites()">
-                <img src="/static/image/chloe.jpg" alt="a user">
+    <body class="explore-body">
+        <div class="explore-container">
+            <h1> Top Matches </h1>
+            <p> These are the peers you matched best with.</p>
+            <p> This is done in the order of uoS, course and faculty.</p> 
+            <div class="scroll-matches">
+                <button class="user-preview" id="invite-chloe" onclick="addToInvites()">
+                    <img src="/static/image/chloe.jpg" alt="a user">
+                    <div class="user-preview-text">
+                        <h2>Chloe</h2>
+                        <p> is <span class="user-studying">studying</span> INFO1110</p>
+                    </div>
+                </button>
+
+                <button class="user-preview" onclick="addToInvites()">
+                    <img src="/static/image/josh.jpg" alt="a user">
+                    <div class="user-preview-text">
+                        <h2>Josh</h2>
+                        <p> is <span class="user-cramming">cramming</span> INFO1110</p>
+                    </div>
+                </button>
+
+                <button class="user-preview" onclick="addToInvites()">
+                    <img src="/static/image/Min.jpg" alt="a user">
+                    <div class="user-preview-text">
+                        <h2>Min</h2>
+                        <p> is <span class="user-cramming">cramming</span> INFO1113</p>
+                    </div>
+                </button>
+            </div>
+        </div>
+        <div class="invited-users">
+            <h1> Invites </h1>
+            <button class="user-preview">
+                <img src="/static/image/divi.jpg" alt="a user">
                 <div class="user-preview-text">
-                    <h2>Chloe</h2>
+                    <h2>Divi</h2>
                     <p> is <span class="user-studying">studying</span> INFO1110</p>
                 </div>
             </button>
-
-            <button class="user-preview" onclick="addToInvites()">
-                <img src="/static/image/josh.jpg" alt="a user">
+        </div>
+        <div class="accepted-users">
+            <h1> Accepted </h1>
+            <button class="user-preview">
+                <img src="/static/image/troy.jpg" alt="a user">
                 <div class="user-preview-text">
-                    <h2>Josh</h2>
+                    <h2>Troy</h2>
                     <p> is <span class="user-cramming">cramming</span> INFO1110</p>
                 </div>
             </button>
-
-            <button class="user-preview" onclick="addToInvites()">
-                <img src="/static/image/Min.jpg" alt="a user">
-                <div class="user-preview-text">
-                    <h2>Min</h2>
-                    <p> is <span class="user-cramming">cramming</span> INFO1113</p>
-                </div>
-            </button>
         </div>
-    </div>
-    <div class="invited-users">
-        <h1> Invites </h1>
-        <button class="user-preview">
-            <img src="/static/image/divi.jpg" alt="a user">
-            <div class="user-preview-text">
-                <h2>Divi</h2>
-                <p> is <span class="user-studying">studying</span   > INFO1110</p>
-            </div>
-        </button>
-    </div>
-    <div class="accepted-users">
-        <h1> Accepted </h1>
-        <button class="user-preview">
-            <img src="/static/image/troy.jpg" alt="a user">
-            <div class="user-preview-text">
-                <h2>Troy</h2>
-                <p> is <span class="user-cramming">cramming</span> INFO1110</p>
-            </div>
-        </button>
-    </div>
-    
-</body>
+        
+    </body>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="/static/script.js"></script>
 </html>
