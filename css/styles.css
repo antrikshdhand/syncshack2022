@@ -1,11 +1,4 @@
 html {
-    font-family: Arial, Helvetica, sans-serif;
-    scroll-behavior: smooth;
-    color: rgb(44, 44, 44);
-}
-
-
-html {
     font-family: 'Roboto', sans-serif;
     scroll-behavior: smooth;
     color: rgb(44, 44, 44);
@@ -73,13 +66,8 @@ a {
 
 
 /* Welcome Page Content */
-
-.bolden {
-    font-weight: 600;
-}
-
 .welcome-page {
-    padding: 80px 25px 40px 25px;
+    padding: 80px 25px;
     text-align: center;
 }
 
@@ -92,21 +80,17 @@ a {
     margin-bottom: 20px;
 }
 
-.welcome-page h2, .welcome-page a {
-    margin-top: 15px;
+.welcome-page h2 {
+    margin-top: 50px;
     font-size: 1.5rem;
     font-weight: 800;
     letter-spacing: 1px;
     color: #18a7f9;
     font-family: 'League Spartan', sans-serif;
-}
-
-.welcome-page a:hover {
-    color: rgb(145, 145, 145);
+    margin-bottom: 40px;
 }
 
 .welcome-page h3 {
-    margin-top: 20px;
     font-size: 1rem;
     font-weight: 400;
     letter-spacing: 1px;
@@ -117,34 +101,6 @@ a {
 
 .welcome-page-h3 {
     padding: 0px 20px;
-}
-
-#student-book {
-    border-radius: 50%;
-    width: 45%;
-    margin-left: 230px;
-}
-
-#jacaranda-1 {
-    border-radius: 50%;
-    width: 35%;
-    margin-left: 45px;
-}
-
-#jacaranda-2 {
-    border-radius: 50%;
-    width: 30%;
-    margin-left: 230px;
-}
-
-#student_phone {
-    border-radius: 50%;
-    width: 45%;
-    margin-left: 45px;
-}
-
-.image-content-2 {
-    margin-bottom: 50px;
 }
 
 @media only screen and (max-width: 900px) {
@@ -219,18 +175,6 @@ button {
   width: 100%;
   opacity: 0.9;
 }
-
-input[type=submit] {
-    font-size: 1rem;
-    background-color: #18a7f9;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    opacity: 0.9;
-  }
 
 button:hover {
   background-color: #6fcaff;
@@ -387,3 +331,5 @@ hr {
     margin: 0 20px;
     margin-bottom: 40px;
 }
+
+
