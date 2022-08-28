@@ -2,4 +2,3 @@ flask
 flask-wtf
 wtforms
 email-validator
-json
