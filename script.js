@@ -16,3 +16,7 @@ function closeMenu() {
     hamburger.classList.remove("active");
     navMenu.classList.remove("active");
 }
+
+function addToInvites() {
+    $("#invite-chloe").appendTo($(".invited-users"));
+}
