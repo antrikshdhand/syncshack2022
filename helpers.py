@@ -21,8 +21,6 @@ def add_user(user_attributes):
 	if user_attributes[2] == '':
 		user_attributes[2] = user_attributes[0]
 	
-
-
 	#adds userdata into the database
 	cur.execute("INSERT INTO users (FirstName, LastName, PrefName, Email, Passw, UserStatus, Course, Faculty) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
 	tuple(user_attributes))
@@ -41,6 +39,22 @@ def add_subjects(email, subjects):
 		(email, subject))
 	
 	cur.close()
+
+def combineSignUps(profile, course_info, unit_list):
+	# produces a tuple in the form
+	# (firstName, lastName, preferredName (if any), email, pass, noOfUnits, course, faculty, listOfUnits)
+	tup  = (profile[0], # first name
+			profile[1], # last name
+			profile[2], # preferred name
+			profile[3], # email
+			profile[4], # pass 
+			course_info["noOfUnits"],
+			course_info["course"],
+			course_info["faculty"],
+			unit_list)
+	
+	return tup
+
 
 
 	
