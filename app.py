@@ -1,15 +1,15 @@
-from helpers import get_db_connection, add_subjects, add_user, combineSignUps
-from forms import SignUp1, SignUp2, SignUp3, Login
+from helpers import get_db_connection, add_subjects, add_user, combineSignUps #importing helper methods from a modularised file
+from forms import SignUp1, SignUp2, SignUp3, Login #importing our Flask WTForms
 
-# required packages
+# Basic Required Libs
 import json
 from flask import Flask, render_template, redirect, request, session, url_for
 
-
+# User security token
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "syncshack2022"
 
-
+# SQL API
 class Application:
 
 	def __init__(self, email):
@@ -41,9 +41,11 @@ class Application:
 		self.invited_users = []
 		self.accepted_users = []
 
+	# returns the loggied in student's user id
 	def get_units_of_study(self):
 		return self.user_subjects
 	
+
 	def preferences(self, subject):
 		preffered_buddies = []
 
@@ -137,15 +139,14 @@ class Application:
 		cur.close()
 
 	
-
-
-
+# Main welcome homepage
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 @app.route('/index.html', methods=['GET', 'POST'])
 def index():
 	return render_template('index.html')
 
+# First page part of the sign up process
 @app.route('/signUp1', methods=['GET', 'POST'])
 def signUp1():
 	signUpForm1 = SignUp1()
@@ -157,6 +158,7 @@ def signUp1():
 		return redirect(url_for("signUp2"))
 	return render_template("signup1.html", form = signUpForm1)
 
+# Second page part of the sign up process
 @app.route('/signUp2', methods=['GET', 'POST'])
 def signUp2():
 	signUpForm2 = SignUp2()
@@ -169,6 +171,8 @@ def signUp2():
 
 	return render_template("signup2.html", form = signUpForm2)
 
+
+# Third page part of the sign up process
 @app.route('/signUp3', methods=['GET', 'POST'])
 def signUp3():
 	signUpForm3 = SignUp3()
@@ -182,11 +186,13 @@ def signUp3():
 
 		tup = combineSignUps(profile, course_info, unit_list)
 		session['FINAL TUP'] = tup
-		# SEND TUP TO JACK
+		# SEND TUP TO SQL API
 
 		return redirect(url_for("myprofile"))
 	return render_template("signup3.html", form=signUpForm3, units=int(course_info["noOfUnits"]))
 
+
+# login Page
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     loginForm = Login()
@@ -196,20 +202,18 @@ def login():
         return redirect(url_for("myprofile"))
     return render_template("login.html", form = loginForm)
 
+# The page students select their preferences for matching Study Buddies
 @app.route('/myprofile', methods=['GET', 'POST'])
 def myprofile():
 	units = session['unit_list']
-	# myprof = Search(units)
 	return render_template("myprofile.html", len=len(units), units=units)
 
+# The page students search for Study Buddies
 @app.route('/explore?', methods=['GET', 'POST'])
 @app.route('/explore', methods=['GET', 'POST'])
 def explore():
 	form2 = session['course_info']
-	print(form2)
-	# units = form2['noOfUnits']
 	units = session['unit_list']
-	# myprof = Search(units)
 	return render_template("explore.html", len=len(units), units=units)
 
 
